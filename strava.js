@@ -16,7 +16,7 @@ function responseHandler(callback) {
         }
         body.statusCode = res.statusCode;
         if (res.statusCode >= 400 && res.statusCode <= 599) {
-            
+
             err = new Error("HTTP error "+res.statusCode);
             return callback(err, body);
         }
@@ -219,7 +219,7 @@ this.activities = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Activity ID is required");
-            
+
         }
         self._get("/activities/"+id, params, responseHandler(callback));
     },
@@ -236,7 +236,7 @@ this.activities = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Activity ID is required");
-            
+
         }
         self._delete("/activities/"+id, params, responseHandler(callback));
     },
@@ -248,7 +248,7 @@ this.activities = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Activity ID is required");
-                
+
             }
             if (params.paginate) {
                 self._paged_get("/activities/"+id+"/comments", params, callback);
@@ -265,7 +265,7 @@ this.activities = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Activity ID is required");
-                
+
             }
             if (params.paginate) {
                 self._paged_get("/activities/"+id+"/kudos", params, callback);
@@ -282,7 +282,7 @@ this.activities = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Activity ID is required");
-                
+
             }
             self._get("/activities/"+id+"/photos", params, responseHandler(callback));
         }
@@ -309,7 +309,7 @@ this.activities = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Activity ID is required");
-                
+
             }
             self._get("/activities/"+id+"/zones", params, responseHandler(callback));
         }
@@ -322,7 +322,7 @@ this.activities = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Activity ID is required");
-                
+
             }
             self._get("/activities/"+id+"/laps", params, responseHandler(callback));
         }
@@ -355,7 +355,7 @@ this.clubs = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Club ID is required");
-            
+
         }
         self._get("/clubs/"+id, params, responseHandler(callback));
     },
@@ -367,7 +367,7 @@ this.clubs = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Club ID is required");
-                
+
             }
             if (params.paginate) {
                 self._paged_get("/clubs/"+id+"/members", params, callback);
@@ -384,7 +384,7 @@ this.clubs = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Club ID is required");
-                
+
             }
             if (params.paginate) {
                 self._paged_get("/clubs/"+id+"/activities", params, callback);
@@ -402,7 +402,7 @@ this.gear = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Gear ID is required");
-            
+
         }
         self._get("/gear/"+id, params, responseHandler(callback));
 
@@ -416,7 +416,7 @@ this.segments = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Segment ID is required");
-            
+
         }
         self._get("/segments/"+id, params, responseHandler(callback));
 
@@ -429,13 +429,13 @@ this.segments = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Segment ID is required");
-                
+
             }
             var types = params.types.join(",");
 
     //  types = "time";
     self._get("/segments/"+id+"/streams/"+types, params, responseHandler(callback));
-    
+
 }
 },
 starred: {
@@ -460,7 +460,7 @@ explore: {
         }
         self._get("/segments/explore", params, responseHandler(callback)); 
     }
-    
+
 },
 leaderboard: {
     get: function(id, params, callback) {
@@ -490,7 +490,7 @@ this.segmentefforts = {
         }
         if (typeof id == 'function' && arguments.length == 1) {
             throw new Error("Segment ID is required");
-            
+
         }
         self._get("/segment_efforts/"+id, params, responseHandler(callback));
     },
@@ -502,7 +502,7 @@ this.segmentefforts = {
             }
             if (typeof id == 'function' && arguments.length == 1) {
                 throw new Error("Segment ID is required");
-                
+
             }
             var types = params.types.join(",");
             self._get("/segment_efforts/"+id+"/streams/"+types, params, responseHandler(callback));
@@ -585,12 +585,10 @@ callback(err, res);
                 } else if (params.data instanceof Buffer) {
                     upload(params.data, callback);
                 } else {
-                    console.log(params.data);
-                    console.log("data type not supported");
                     upload(new Buffer(params.data), callback);
                 }
             }
-            
+
         },
         poll:function(id, callback) {    
             request.get({
