@@ -587,6 +587,7 @@ callback(err, res);
                 } else {
                     console.log(params.data);
                     console.log("data type not supported");
+                    upload(new Buffer(params.data), callback);
                 }
             }
             
